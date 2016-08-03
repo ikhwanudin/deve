@@ -1,0 +1,38 @@
+---
+layout: default
+---
+{% include variable.html %}
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+    <p class="post-meta"><i class="fa fa-calendar">&nbsp</i><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %} • {% disqus_comments_link %}</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+  <div>{% tweet_button %} - {% facebook_like_button %} - {% gplus_share_button %}</div>
+  {% capture category %}{{ page.categories | size }}{% endcapture %}
+  {% if category != '0' %}
+  	<span class="categories"><i class="fa fa-tags">&nbsp</i>posted in {{ page.categories | category_links | join: ", " }}</span>
+  {% endif %}
+
+</article>
+<div id="bottom-nav" class="row">
+  {% if page.previous.url %}
+  <div class="col-xs-6 col-md-6">
+    <a href="{{ page.previous.url }}" class="btn btn-{{ scheme }}" data-toggle="tooltip" data-placement="right" title="{{ page.previous.title }}"><i class="fa fa-chevron-left">&nbsp</i>Previous</a>
+  </div>
+  {% else %}
+  <div class="col-xs-6 col-md-6">
+    <a href="#" hidden="hidden"></a>
+  </div>
+  {% endif %}
+  {% if page.next.url %}
+  <div class="col-xs-6 col-md-6">
+    <a href="{{ page.next.url }}" class="btn btn-{{ scheme }} pull-xs-right" data-toggle="tooltip" data-placement="left" title="{{ page.next.title }}">Next <i class="fa fa-chevron-right"></i></a>
+  </div>
+  {% endif %}
+</div>
+{% disqus_comments %}

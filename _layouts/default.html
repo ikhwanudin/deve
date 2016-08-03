@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+  {% include head.html %}
+  <body>      
+    <div id="navbar" class="col-md-12 col-lg-3 bg-inverse pos-f-t">
+      {% include navbar.html %}      
+    </div>
+    <div id="content" class="col-md-12 col-lg-9 push-lg-3">
+      <div class="content">{{ content }}</div>
+      <div class="footer">{% include footer.html %}</div>
+    </div>
+  {% include script.html %}
+  {% if page.title == "Pencarian Auto Compleat Di Jekyll Dengan Bootstrap 4" %}
+  <script src="{{ "/source/jekyll-search.min.js" | prepend: site.baseurl }}"></script>
+  <script type="text/javascript">
+    SimpleJekyllSearch.init({
+      searchInput: document.getElementById('input'),
+      resultsContainer: document.getElementById('hasil'),
+      searchResultTemplate: '<a class="dropdown-item" href="{url}">{title}</a>',
+      noResultsText: '<div class="dropdown-item no-results">Maaf, tidak ada hasil yang sesuai dengan kata kunci.</div>',
+      json: '{{ site.baseurl }}/source/search.json'
+    })
+  </script> 
+  {% endif %}
+  {% if page.layout == "post" %}
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
+    {% twitter_script_tag %}
+    {% facebook_script_tag %}
+    {% gplus_script_tag %}    
+  {% endif %}
+  </body>
+</html>

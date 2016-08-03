@@ -1,0 +1,11 @@
+{% include variable.html %}
+<div class="container" style="text-align:center; padding-top:20px;">
+	<img class="avatar img-circle img-fluid m-x-auto d-block" src="{{ "/assets/images/about.jpg" | prepend: site.baseurl }}" alt="avatar">
+	<a class="text-{{ scheme }}" href="{{ "/" | prepend: site.baseurl }}"><h3>{{ site.title }}</h3></a>
+	<span class="text-muted">"{{ site.description }}"</span> <br>
+	<div  style="margin-top:15px;" class="btn-group" role="group" aria-label="Basic example">
+	  <a href="{{ "/about" | prepend: site.baseurl }}" type="button" class="btn btn-outline-{{ scheme }}">About</a>
+	  <a href="{{ "/" | prepend: site.baseurl }}" type="button" class="btn btn-outline-{{ scheme }}">Blog</a>
+	  <a href="{{ "/archive" | prepend: site.baseurl }}" type="button" class="btn btn-outline-{{ scheme }}">Archives</a>
+	</div>
+</div>

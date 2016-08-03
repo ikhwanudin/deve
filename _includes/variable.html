@@ -1,0 +1,17 @@
+{% assign color = site.color_scheme %}
+{% case color %}
+	{% when 'blue' %}
+		{% assign scheme = 'primary' %}
+	{% when 'white' %}
+		{% assign scheme = 'secondary' %}
+	{% when 'green' %}
+		{% assign scheme = 'success' %}
+	{% when 'light blue' %}
+		{% assign scheme = 'info' %}
+	{% when 'orange' %}
+		{% assign scheme = 'warning' %}
+	{% when 'red' %}
+		{% assign scheme = 'danger' %}
+	{% else %}
+		{% assign scheme = 'success' %}
+{% endcase %}
